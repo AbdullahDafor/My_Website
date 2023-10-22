@@ -102,6 +102,11 @@ textarea:focus {
     box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25),
         0px 2px 4px rgba(255, 255, 255, 0.2) inset;
     transition: background-color 0.3s, color 0.3s;
+    color: white;
+    border-radius: 10px;
+    font-weight: 700;
+    border: none;
+    font-size: 20px;
 }
 
 .button:hover {
@@ -195,6 +200,9 @@ section > .title + .container {
 
 /* S Mobile */
 @media (min-width: 320px) {
+    .landing .sign-in h1 {
+    font-size: 24px;
+    }
     .container {
         width: 300px;
     }
@@ -207,6 +215,58 @@ section > .title + .container {
     .landing-text {
         width: inherit;
         text-align: center;
+    }
+
+    .landing h1 {
+        font-size: 54px;
+    }
+
+    .landing .sign-in h1 {
+        font-size: 24px;
+    }
+
+    .landing .sign-in form {
+        gap: 15px;
+        margin-top: 15px;
+    }
+
+    .landing .sign-in form div:first-child {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .landing form>div:first-child input {
+        width: 100%;
+        font-size: 16px;
+        padding: 15px 15px;
+        text-align: center;
+    }
+    .landing form button {
+        width: 80%;
+    }
+    .landing form hr {
+        width: 80%;
+    }
+    .landing form>span {
+        margin: 10px 0;
+    }
+    .landing form .google {
+        width: 80%;
+    }
+    .landing .new>div {
+        padding: 10px;
+    }
+    .landing .new p{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .landing .new p span {
+        font-size: 20px;
+        margin: 0px;
+    }
+    .landing-text .title:has(img) {
+        margin: auto;
     }
     .news {
         grid-column: span 12 !important;
@@ -268,11 +328,61 @@ section > .title + .container {
     header .burger,
     header .mobile-nav {
         display: none;
+        pointer-events: none;
     }
 
     .landing-text {
         width: fit-content;
         text-align: right;
+    }
+
+    .landing .sign-in h1 {
+        font-size: 54px;
+    }
+
+    .landing .sign-in form {
+        gap: 30px;
+        margin-top: 50px;
+    }
+
+    .landing .sign-in form div:first-child {
+        flex-direction: row;
+        gap: 20px;
+    }
+
+    .landing form>div:first-child input {
+        width: 50%;
+        font-size: 24px;
+        padding: 20px 30px;
+        text-align: right;
+    }
+
+    .landing form button {
+        width: 33%;
+    }
+    .landing form hr {
+        width: 33%;
+    }
+    .landing form>span {
+        margin: 0;
+    }
+    .landing form .google {
+        width: 33%;
+    }
+    .landing .new>div {
+        padding: 25px;
+    }
+    .landing .new p{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+    .landing .new p span {
+        font-size: 20px;
+        margin-right: 30px;
+    }
+    .landing-text .title:has(img) {
+        margin: 0;
     }
 
     section > .title > h3 {
@@ -412,10 +522,10 @@ header .burger span {
     margin: 6px;
 }
 
-header .burger:hover + .mobile-nav {
+/* header .burger:hover + .mobile-nav {
     opacity: 1;
-    animation: disable-pointer-events 100ms;
-}
+    animation: disable-pointer-events 500ms;
+} */
 
 header .mobile-nav::before {
     content: "";
@@ -430,7 +540,7 @@ header .mobile-nav::before {
 }
 
 header .mobile-nav {
-    display: block;
+    display: none;
     width: 100%;
     opacity: 0;
     position: absolute;
@@ -441,7 +551,11 @@ header .mobile-nav {
     border-radius: var(--border-radius);
     text-align: center;
     box-shadow: var(--object-shadow);
-    transition: opacity 0.1s;
+    transition: opacity 0.15s;
+}
+
+.reveal ul{
+    opacity: 1;
 }
 
 header .mobile-nav li {
@@ -452,6 +566,9 @@ header .mobile-nav li {
     0%,
     99% {
         pointer-events: none;
+    }
+    100% {
+        pointer-events: auto;
     }
 }
 
@@ -501,11 +618,10 @@ header .mobile-nav a.sign-in::after {
 
 .landing {
     position: relative;
-    background-image: url(../IMG/Landing.png);
     background-size: cover;
     background-position: center;
     width: 100%;
-    height: calc(100vh + 20px);
+    min-height: calc(100vh + 20px);
     border-radius: 0px 0px 20px 20px;
     box-shadow: var(--big-image-shadow);
     overflow: hidden;
@@ -517,7 +633,7 @@ header .mobile-nav a.sign-in::after {
     position: absolute;
     height: 100%;
     width: 100%;
-    background-color: rgba(8, 140, 127, 0.07);
+    background-color: rgba(8, 140, 127, 0.1);
     border-radius: 0px 0px 20px 20px;
 }
 
@@ -538,6 +654,8 @@ header .mobile-nav a.sign-in::after {
     backdrop-filter: blur(20px);
     box-shadow: var(--shadow);
     min-height: 100px;
+    width: fit-content;
+    height: fit-content;
     padding: 18px 25px;
     transition: background-color 0.15s cubic-bezier(0, 0, 0, 1),
         color 0.15s cubic-bezier(0, 0, 0, 1);
@@ -549,13 +667,192 @@ header .mobile-nav a.sign-in::after {
 }
 
 .landing-text h1 {
-    font-size: 54px;
+    /* font-size: 54px; */
+    width: fit-content;
     margin: 0;
+    height: 100%;
+}
+
+.landing-text img {
+    max-height: 200px;
+    max-width: 300px;
 }
 
 .landing-text p {
     padding: 7px 25px;
     font-size: 24px;
+}
+
+.landing-text p.sub {
+    margin-top: 25px;
+    padding: 15px 25px;
+    background-color: var(--secondary-transparent-color);
+    border-radius: var(--border-radius);
+    backdrop-filter: blur(20px);
+    box-shadow: var(--shadow);
+}
+
+/* Sign In */
+
+.landing:has(.sign-in) {
+    min-height: 100vh;
+    box-shadow: none;
+    background-color:steelblue;
+    border-radius: 0;
+}
+
+.landing .sign-in {
+    width: inherit;
+}
+
+.landing .sign-in .title {
+    width: 83%;
+    margin: auto;
+    text-align: center;
+}
+
+.landing .sign-in .title h1 {
+    margin: auto;
+}
+
+.landing form {
+    width: 83%;
+    margin: auto;
+    /* margin-top: 50px; */
+    display: flex;
+    /* gap: 30px; */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.landing form div {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+}
+
+.landing form>div:first-child input {
+    /* width: 50%; */
+    color: white;
+    font-weight: 800;
+    /* font-size: 24px; */
+    /* padding: 20px 30px; */
+    border-radius: var(--border-radius);
+    background-color: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(20px);
+    transition: outline 0.1s;
+    border: 3px solid white;
+}
+
+.landing form div input::placeholder {
+    color: white;
+    font-weight: 500;
+}
+
+.landing form div input:focus {
+    outline: 5px solid rgba(255, 255, 255, 0.85);
+}
+
+.landing form button {
+    /* width: 33%;*/
+    font-size: 24px;
+}
+
+.landing form hr {
+    /* width: 33%; */
+    height: 1px;
+    background-color: white;
+    /* margin-top: -15px; */
+    margin-bottom: -10px;
+}
+
+.landing form {
+    font-size: 20px;
+}
+
+.landing form .google {
+    margin-top: -15px;
+    /* width: 33%; */
+    padding: 15px 30px;
+    background-color: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(20px);
+    color: black;
+    border-radius: var(--border-radius);
+    gap: 10px;
+    justify-content: space-between;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    box-shadow: var(--object-shadow);
+}
+
+.landing form .google:hover {
+    background-color: #4285F4;
+}
+
+.landing form .google img {
+    filter: brightness(1);
+    /* transition: filter 0.1s; */
+}
+
+.landing form .google:hover img {
+    filter: brightness(1000);
+}
+
+.landing form .google p {
+    padding: 0;
+    font-size: 17px;
+}
+
+.landing form .google:hover p {
+    color: white;
+}
+
+.landing .new {
+    position: absolute;
+    color: white;
+    font-size: 20px;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%);
+    width: inherit;
+}
+
+.landing .new>div {
+    background-color: var(--secondary-transparent-color);
+    backdrop-filter: blur(20px);
+    /* padding: 25px; */
+    width: 83%;
+    margin: auto;
+    border-radius: 20px 20px 0 0;
+}
+
+.landing .new>div p {
+    text-align: center;
+}
+
+.landing .new>div p a {
+    display: inline;
+}
+
+.landing .new>div p span {
+    position: relative;
+    /* margin-right: 30px; */
+    /* font-size: 24px; */
+    color: var(--secondary-color);
+    font-weight: 900;
+}
+
+.landing .new>div p span::after {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: var(--secondary-color);
+    left: 0;
+    transform: translateY(-5px);
 }
 
 /* End Landing */
@@ -965,3 +1262,125 @@ footer a:has(.fa-telegram):hover {
 }
 
 /* End Footer */
+
+/* ######################### */
+/* ##### Collages Page ##### */
+/* ######################### */
+
+.collages .filter ul {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-bottom: 25px;
+}
+
+.collages .filter ul li {
+    cursor: pointer;
+    padding: 15px 25px;
+    text-align: center;
+    background-color: transparent;
+    border-radius: var(--border-radius);
+    transition: background-color 0.15s;
+    user-select: none;
+}
+
+.collages .filter ul li:hover {
+    background-color: var(--secondary-transparent-color);
+}
+
+.collages .filter ul li.active {
+    cursor: pointer;
+    background-color: var(--secondary-color);
+    font-weight: 800;
+    color: white;
+    box-shadow: var(--shadow);
+}
+
+.collages .filter ul li.active:hover {
+    background-color: var(--primary-color);
+}
+
+.collages .collages-grid ul {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.collages .collages-grid ul li {
+    position: relative;
+    width: 220px;
+    height: 220px;
+    background-color: var(--primary-transparent-color);
+    background-image: url(../IMG/Collages/Med.jpg);
+    background-position: center;
+    background-size: cover;
+    border-radius: var(--border-radius);
+    box-shadow: var(--object-shadow);
+}
+
+.collages .collages-grid ul li a span {
+    content: "";
+    display: block;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    background-color: rgba(8, 140, 127, 0.5);
+    border-radius: var(--border-radius);
+    z-index: 1;
+}
+
+.collages .collages-grid ul li a {
+    display: flex;
+    gap: 25px;
+    font-size: 24px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    color: white;
+}
+
+.collages .collages-grid ul li a span.blur {
+    background-color: transparent;
+    backdrop-filter: blur(5px);
+    background-color: rgba(8, 140, 127, 0.3);
+    opacity: 0;
+}
+
+.collages .collages-grid ul li a span::after {
+    content: "";
+    display: block;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    background-color: rgba(8, 140, 127, 0.3);
+    border-radius: var(--border-radius);
+    opacity: 0;
+    backdrop-filter: blur(5px);
+    transition: opacity 0.3s;
+    z-index: 1;
+}
+
+.collages .collages-grid ul li a:hover span::after {
+    opacity: 1;
+}
+
+.collages ul li a i {
+    margin-top: 10px;
+    font-size: 64px;
+    text-shadow: var(--text-shadow);
+    z-index: 1;
+}
+
+.collages ul li a h3 {
+    font-size: 24px;
+    padding: 0 10px;
+    text-align: center;
+    text-shadow: var(--text-shadow);
+    z-index: 1;
+}
